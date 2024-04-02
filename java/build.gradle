@@ -5,6 +5,9 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "2.0.0-rc-2"
 }
 
+group = "me.tatarka.google.material"
+version = "0.1"
+
 repositories {
     mavenCentral()
     google()
@@ -36,7 +39,6 @@ publishing {
         maven(MavenPublication) {
             groupId = "me.tatarka.google.material"
             artifactId = "material-color-utilities"
-            version = "0.1"
 
             from components.java
 
@@ -65,8 +67,6 @@ publishing {
         }
     }
 }
-
-group = "me.tatarka.google.material"
 
 nexusPublishing {
     repositories {
