@@ -7,12 +7,12 @@ jobs:
       - checkout
       - run:
           name: Build
-          command: ./gradlew assemble
+          command: cd java && ./gradlew assemble
       - run:
           name: Publish
           command: |
             if [ "${CIRCLE_BRANCH}" == "main" && -n "${CIRCLE_TAG}" ]; then
-              ./"gradlew publishToSonatype closeSonatypeStagingRepository
+              cd java && ./gradlew publishToSonatype closeSonatypeStagingRepository
             fi
 workflows:
   version: 2
