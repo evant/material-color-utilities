@@ -1,5 +1,23 @@
 # Material Color Utilities
 
+[![Maven Central](https://img.shields.io/maven-central/v/me.tatarka.google.material/material-color-utilities.svg)](https://search.maven.org/search?q=g:me.tatarka.google.material)
+
+This is a fork in order to publish the java code as a library on maven central. You can use is with gradle
+
+```gradle
+implementation("me.tatarka.google.material:material-color-utilities:0.1")
+```
+or maven
+```xml
+<dependency>
+  <groupId>me.tatarka.google.material</groupId>
+  <artifactId>material-color-utilities</artifactId>
+  <version>0.1</version>
+</dependency>
+```
+
+----
+
 Algorithms and utilities that power the Material Design 3 (M3) color system,
 including choosing theme colors from images and creating tones of colors; all in
 a new color space.
