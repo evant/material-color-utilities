@@ -66,6 +66,8 @@ publishing {
     }
 }
 
+group = "me.tatarka.google.material"
+
 nexusPublishing {
     repositories {
         sonatype()
