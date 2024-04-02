@@ -1,0 +1,38 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:17.0.1
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: cd java && ./gradlew assemble
+  publish:
+    docker:
+      - image: cimg/openjdk:17.0.1
+    steps:
+    - checkout
+    - run:
+        name: Publish
+        command: |
+          if [[ -n "${CIRCLE_TAG}" ]]; then
+            echo "$MAVEN_CENTRAL_SEC_RING" | base64 -d > $HOME/secring.gpg
+            gpg --import --batch $HOME/secring.gpg
+            cd java && ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -PsonatypeUsername="$SONATYPE_USERNAME" -PsonatypePassword="$SONATYPE_PASSWORD" -Psigning.keyId="$MAVEN_CENTRAL_KEY_ID" -Psigning.password="$MAVEN_CENTRAL_KEY_PASSPHRASE" -Psigning.secretKeyRingFile=$HOME/secring.gpg --no-parallel
+          fi
+workflows:
+  version: 2
+  workflow:
+    jobs:
+      - build:
+          filters:
+            tags:
+              ignore: /.*/
+      - publish:
+          context: opensource-maven
+          filters:
+            branches:
+              only: main
+            tags:
+              only: /.*/
