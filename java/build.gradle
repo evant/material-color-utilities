@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "me.tatarka.google.material"
-version = "0.1"
+version = "0.1.1"
 
 repositories {
     mavenCentral()
@@ -15,7 +15,7 @@ repositories {
 
 dependencies {
     api("androidx.annotation:annotation:1.0.0")
-    implementation("com.google.errorprone:error_prone_annotation:2.26.1")
+    compileOnly("com.google.errorprone:error_prone_annotations:2.26.1")
 }
 
 java {
