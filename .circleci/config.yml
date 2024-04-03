@@ -19,7 +19,7 @@ jobs:
           if [[ -n "${CIRCLE_TAG}" ]]; then
             echo "$MAVEN_CENTRAL_SEC_RING" | base64 -d > $HOME/secring.gpg
             gpg --import --batch $HOME/secring.gpg
-            cd java && ./gradlew publishToSonatype closeSonatypeStagingRepository -PsonatypeUsername="$SONATYPE_USERNAME" -PsonatypePassword="$SONATYPE_PASSWORD" -Psigning.keyId="$MAVEN_CENTRAL_KEY_ID" -Psigning.password="$MAVEN_CENTRAL_KEY_PASSPHRASE" -Psigning.secretKeyRingFile=$HOME/secring.gpg --no-parallel
+            cd java && ./gradlew publishToSonatype closeAndReleaseSonatypeStagingRepository -PsonatypeUsername="$SONATYPE_USERNAME" -PsonatypePassword="$SONATYPE_PASSWORD" -Psigning.keyId="$MAVEN_CENTRAL_KEY_ID" -Psigning.password="$MAVEN_CENTRAL_KEY_PASSPHRASE" -Psigning.secretKeyRingFile=$HOME/secring.gpg --no-parallel
           fi
 workflows:
   version: 2
