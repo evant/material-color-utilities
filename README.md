@@ -5,14 +5,14 @@
 This is a fork in order to publish the java code as a library on maven central. You can use is with gradle
 
 ```gradle
-implementation("me.tatarka.google.material:material-color-utilities:0.1.1")
+implementation("me.tatarka.google.material:material-color-utilities:0.1.2")
 ```
 or maven
 ```xml
 <dependency>
   <groupId>me.tatarka.google.material</groupId>
   <artifactId>material-color-utilities</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
